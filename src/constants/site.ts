@@ -15,6 +15,25 @@ export const siteMetadata: Metadata = {
     canonical: siteConfig.url,
   },
   description: siteConfig.description,
+  icons: {
+    icon: [
+      {
+        type: "image/svg+xml",
+        url: "/favicon.svg",
+      },
+      {
+        type: "image/x-icon",
+        url: "/favicon.ico",
+      },
+    ],
+    apple: [
+      {
+        sizes: "180x180",
+        type: "image/png",
+        url: "/apple-touch-icon.png",
+      },
+    ],
+  },
   metadataBase: new URL(siteConfig.url),
   openGraph: {
     description: siteConfig.description,
