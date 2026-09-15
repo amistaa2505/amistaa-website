@@ -13,11 +13,11 @@ export function Logo({ className }: LogoProps) {
       <span className="relative flex h-10 w-10 items-center justify-center overflow-hidden">
         <Image
           alt="Amistaa logo"
-          className="scale-[1.55] object-contain"
-          fill
+          className="h-10 w-10 scale-[1.08] object-contain"
           priority
-          sizes="50px"
-          src="/images/amistaa-logo.png"
+          height={40}
+          src="/images/amistaa_logo.png"
+          width={40}
         />
       </span>
       <GradientText className="text-lg font-bold tracking-[-0.03em]">Amistaa</GradientText>
