@@ -4,8 +4,9 @@ import { Container } from "@/components/ui/Container";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { GradientText } from "@/components/ui/GradientText";
 import { Section } from "@/components/ui/Section";
+import { ButtonLink } from "@/components/ui/Button";
 
-export function CreatorEconomy() {
+export function CreatorEconomy({ detailed = false }: { detailed?: boolean }) {
   return (
     <Section id="creator">
       <Container className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
@@ -19,7 +20,7 @@ export function CreatorEconomy() {
           </p>
         </FadeIn>
         <div className="grid gap-5">
-          {creatorHighlights.map((item, index) => (
+          {creatorHighlights.slice(0, detailed ? creatorHighlights.length : 1).map((item, index) => (
             <FadeIn
               className="rounded-[1.5rem] border border-zinc-200 bg-white p-7 shadow-[0_24px_70px_rgba(16,17,20,0.07)]"
               delay={index * 0.08}
@@ -30,6 +31,7 @@ export function CreatorEconomy() {
               <p className="mt-3 text-sm leading-7 text-zinc-600">{item.body}</p>
             </FadeIn>
           ))}
+          {!detailed ? <ButtonLink className="justify-self-start" href="/creators" variant="secondary">Explore for Creators <span aria-hidden="true" className="ml-2">→</span></ButtonLink> : null}
         </div>
       </Container>
     </Section>

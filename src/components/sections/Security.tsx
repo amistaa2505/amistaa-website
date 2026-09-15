@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Container } from "@/components/ui/Container";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { Section } from "@/components/ui/Section";
+import { ButtonLink } from "@/components/ui/Button";
 
 export function Security() {
   return (
@@ -30,6 +31,7 @@ export function Security() {
             );
           })}
         </div>
+        <ButtonLink className="mt-8 border-white/20 bg-white/10 text-white hover:bg-white/15" href="/security" variant="secondary">Explore Security <span aria-hidden="true" className="ml-2">→</span></ButtonLink>
       </Container>
     </Section>
   );

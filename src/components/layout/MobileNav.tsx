@@ -3,12 +3,14 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import type { KeyboardEvent } from "react";
 import { navItems } from "@/constants/nav";
 import { siteConfig } from "@/constants/site";
+import { cn } from "@/lib/cn";
 
-const mobileNavItems = navItems.filter((item) => item.href !== "#how-it-works");
+const mobileNavItems = navItems;
 
 const mobileActions = [
   { href: siteConfig.creatorUrl, label: "Become a Creator" },
@@ -16,6 +18,7 @@ const mobileActions = [
 ];
 
 export function MobileNav() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -130,16 +133,24 @@ export function MobileNav() {
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
           >
             <nav aria-label="Mobile navigation" className="flex flex-col gap-1">
-              {mobileNavItems.map((item) => (
+              {mobileNavItems.map((item) => {
+                const isActive = item.href.startsWith("/") && !item.href.includes("#") && pathname === item.href;
+
+                return (
                 <Link
-                  className="rounded-2xl px-5 py-4 text-base font-medium text-zinc-700 transition hover:bg-zinc-50 hover:text-zinc-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7D3CFF]"
+                  aria-current={isActive ? "page" : undefined}
+                  className={cn(
+                    "rounded-2xl px-5 py-4 text-base font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#7D3CFF]",
+                    isActive ? "bg-[#f7f6ff] text-[#6D4AFF]" : "text-zinc-700 hover:bg-zinc-50 hover:text-[#6D4AFF]",
+                  )}
                   href={item.href}
                   key={item.href}
                   onClick={closeMenu}
                 >
                   {item.label}
                 </Link>
-              ))}
+                );
+              })}
             </nav>
 
             <div className="mt-3 grid gap-1 border-t border-zinc-200/80 pt-3">

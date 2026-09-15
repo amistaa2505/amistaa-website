@@ -7,7 +7,7 @@ type ButtonVariant = "primary" | "secondary" | "ghost";
 const buttonClasses: Record<ButtonVariant, string> = {
   ghost: "text-zinc-700 hover:bg-zinc-100",
   primary:
-    "bg-zinc-950 text-white shadow-[0_18px_40px_rgba(16,17,20,0.18)] hover:-translate-y-0.5 hover:bg-zinc-800",
+    "bg-zinc-950 !text-white shadow-[0_18px_40px_rgba(16,17,20,0.18)] hover:-translate-y-0.5 hover:bg-zinc-800",
   secondary:
     "border border-zinc-200 bg-white text-zinc-950 shadow-[0_12px_28px_rgba(16,17,20,0.08)] hover:-translate-y-0.5 hover:border-zinc-300",
 };

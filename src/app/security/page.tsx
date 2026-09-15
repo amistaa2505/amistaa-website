@@ -1,0 +1,13 @@
+import type { Metadata } from "next";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { PublicPage } from "@/components/layout/PublicPage";
+import { Security } from "@/components/sections/Security";
+import { Container } from "@/components/ui/Container";
+import { GradientText } from "@/components/ui/GradientText";
+import { ButtonLink } from "@/components/ui/Button";
+
+export const metadata: Metadata = { title: "Security | Amistaa", description: "Explore the verification, payment, moderation, and account trust mechanisms behind Amistaa.", alternates: { canonical: "https://amistaa.com/security" }, openGraph: { title: "Security | Amistaa", description: "Trust mechanisms behind Amistaa.", url: "https://amistaa.com/security", type: "website" }, twitter: { card: "summary", title: "Security | Amistaa", description: "Trust mechanisms behind Amistaa." } };
+
+const safeguards = ["Creator onboarding and verification before premium access", "Wallet and payment flows designed for clear access and records", "Moderation, reporting, and review workflows for safer communication", "Platform controls that help protect accounts and conversations"];
+
+export default function SecurityPage() { return <PublicPage><main><section className="bg-zinc-50 py-24 sm:py-32"><Container><div className="max-w-4xl"><p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#3B2EFF]">Security at Amistaa</p><h1 className="mt-6 text-5xl font-semibold tracking-tight text-zinc-950 sm:text-7xl">Trust is the <GradientText>operating system.</GradientText></h1><p className="mt-7 max-w-2xl text-xl leading-9 text-zinc-600">Amistaa brings verification, access, payments, and moderation together so conversations can happen with more confidence.</p></div></Container></section><Security /><section className="pb-20 sm:pb-28"><Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20"><div><p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#3B2EFF]">What we focus on</p><h2 className="mt-4 text-4xl font-semibold tracking-tight text-zinc-950 sm:text-5xl">Safety should be part of every step.</h2></div><div className="grid gap-4">{safeguards.map((item) => <div className="flex gap-3 rounded-2xl border border-zinc-200 bg-zinc-50 p-5 text-zinc-700" key={item}><CheckCircle2 aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-[#7D3CFF]" /><span className="leading-7">{item}</span></div>)}</div></Container></section><section className="pb-20"><Container><div className="text-center"><ButtonLink href="/feedback">Report an issue or share feedback <ArrowRight aria-hidden="true" className="ml-2 h-4 w-4" /></ButtonLink></div></Container></section></main></PublicPage>; }

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { siteUrl } from "@/lib/seo";
 
 export const siteConfig = {
-  creatorUrl: "#creator",
+  creatorUrl: "/creators",
   description:
     "Amistaa is a secure creator communication platform for premium one-to-one audio and video conversations.",
   downloadUrl: "#download",
@@ -47,7 +47,7 @@ export const siteMetadata: Metadata = {
     ],
     locale: "en_IN",
     siteName: siteConfig.name,
-    title: "Amistaa | Secure creator conversations",
+    title: "Amistaa — Connect. Talk. Earn.",
     type: "website",
     url: siteConfig.url,
   },
@@ -56,13 +56,13 @@ export const siteMetadata: Metadata = {
     index: true,
   },
   title: {
-    default: "Amistaa | Secure creator conversations",
+    default: "Amistaa — Connect. Talk. Earn.",
     template: "%s | Amistaa",
   },
   twitter: {
     card: "summary_large_image",
     description: siteConfig.description,
     images: ["/images/hero-creator-app.png"],
-    title: "Amistaa | Secure creator conversations",
+    title: "Amistaa — Connect. Talk. Earn.",
   },
 };

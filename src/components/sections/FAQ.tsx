@@ -9,8 +9,9 @@ import { FadeIn } from "@/components/ui/FadeIn";
 import { Section } from "@/components/ui/Section";
 import { cn } from "@/lib/cn";
 import { AnimatePresence, motion } from "framer-motion";
+import { ButtonLink } from "@/components/ui/Button";
 
-export function FAQ() {
+export function FAQ({ limit }: { limit?: number }) {
   const [openItems, setOpenItems] = useState<Set<number>>(new Set());
 
   function toggleItem(index: number) {
@@ -35,7 +36,7 @@ export function FAQ() {
           </h2>
         </FadeIn>
         <div className="divide-y divide-zinc-200 rounded-[1.5rem] border border-zinc-200 bg-white">
-          {faqs.map((faq, index) => {
+          {faqs.slice(0, limit).map((faq, index) => {
             const isOpen = openItems.has(index);
             const answerId = `faq-answer-${index}`;
 
@@ -72,6 +73,7 @@ export function FAQ() {
             );
           })}
         </div>
+        {limit ? <ButtonLink className="justify-self-start lg:col-start-2" href="/faq" variant="secondary">View all FAQs <span aria-hidden="true" className="ml-2">→</span></ButtonLink> : null}
       </Container>
     </Section>
   );
